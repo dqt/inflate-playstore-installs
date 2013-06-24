@@ -1,0 +1,19 @@
+Yes it can be done using the AccountManager and the removeAccount method.
+
+First get an instance of the AccountManager:
+
+AccountManager am = AccountManager.get(this);
+Then get a list of all accounts on the device:
+
+Account[] accounts = am.getAccounts();
+Once you've chosen which account(s) you want to remove (for this example we'll just use the first), call removeAccount on them:
+
+if (accounts.length > 0) {
+    Account accountToRemove = accounts[0];
+    am.removeAccount(accountToRemove, null, null);
+}
+You can use the 2nd parameter of the removeAccount method to supply a callback to be called once the account has been removed (removing an account is an asynchronous operation).
+
+
+
+http://stackoverflow.com/questions/12586019/can-i-delete-the-accounts-and-sync-in-android-phone-programmatically
